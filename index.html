@@ -16,10 +16,10 @@
         <a href="#" class="navbar__logo"> DPSM</a>
 
         <div class="navbar__menu">
-            <a href="#" class="navbar__link">Home</a>
-            <a href="#" class="navbar__link">Projects</a>
-            <a href="#" class="navbar__link">Client</a>
-            <a href="#" class="navbar__link">About</a>
+            <a href="#home" class="navbar__link">Home</a>
+            <a href="#projects" class="navbar__link">Projects</a>
+            <a href="#client" class="navbar__link">Client</a>
+            <a href="#about" class="navbar__link">About</a>
         </div>
 
         <div class="hamburger">
@@ -37,7 +37,7 @@
         </div>
     </nav>
 
-    <section class="hero">
+    <section id="home" class="hero">
 
         <div class="hero__content">
             <img src="./assets/dpsm.png" alt="Profile Image" class="hero__image">
@@ -98,7 +98,7 @@
 
     </section>
 
-    <section class="showcase">
+    <section id="projects" class="showcase">
 
         <div class="showcase__header">
             <h3>Documentation And Our Projects</h3>
@@ -171,7 +171,7 @@
                     </div>
                 </div>
 
-                <div class="category__projects">
+                <div id="client" class="category__projects">
                     <div class="project-card">
                         <img src="./assets/bukaka.png" alt="NFT Landing" class="project-card__image">
                         <div class="project-card__info">
@@ -216,7 +216,7 @@
 
     </section>
 
-    <section class="career">
+    <section id="about" class="career">
         <div class="career__jobs">
             <h3>Work Experience</h3>
             <div class="job">
@@ -300,11 +300,32 @@
             navMenu.classList.toggle('active');
         });
         
-        // Close menu when clicking on a nav link
+        // Smooth scrolling with offset for fixed header
         document.querySelectorAll('.navbar__link').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu when a link is clicked
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
+                
+                // Get the target section
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    // Get the height of the navbar for offset
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    
+                    // Calculate the position to scroll to (with offset)
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    
+                    // Smooth scroll to the target
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>

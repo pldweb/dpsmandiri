@@ -7,6 +7,10 @@
     font-family: "Roboto", sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 a{
     text-decoration: none;
     color: #1f2937;
@@ -128,6 +132,7 @@ body{
     gap: 60px;
     height: calc(100vh - 75px);
     margin-top: 75px; /* Added to account for fixed navbar */
+    scroll-margin-top: 75px; /* Added for smooth scrolling with fixed header */
 }
 
 .hero__content,
@@ -267,6 +272,7 @@ body{
 .showcase{
     padding: 80px 60px 100px;
     background: #e5e7eb;
+    scroll-margin-top: 75px; /* Added for smooth scrolling with fixed header */
 }
 
 .showcase__header{
@@ -345,6 +351,10 @@ body{
     gap: 20px;
 }
 
+#client {
+    scroll-margin-top: 75px; /* Added for smooth scrolling with fixed header */
+}
+
 .project-card{
     position: relative;
     width: 25%;
@@ -409,6 +419,7 @@ body{
     display: flex;
     align-items: center;
     gap: 100px;
+    scroll-margin-top: 75px; /* Added for smooth scrolling with fixed header */
 }
 
 .career__jobs,

@@ -53,6 +53,14 @@ body{
     align-items: center;
     justify-content: space-between;
     padding: 20px 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #f3f4f6;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar__logo{
@@ -77,6 +85,10 @@ body{
     font-size: 14px;
     font-weight: 500;
     transition: all 0.5s ease;
+}
+
+.hamburger {
+    display: none; /* Hide on desktop */
 }
 
 .navbar__link:hover,
@@ -115,6 +127,7 @@ body{
     padding: 100px 60px;
     gap: 60px;
     height: calc(100vh - 75px);
+    margin-top: 75px; /* Added to account for fixed navbar */
 }
 
 .hero__content,
@@ -590,6 +603,7 @@ body{
 
     .hero{
         padding: 100px 30px 40px;
+        margin-top: 70px; /* Adjusted for fixed navbar */
     }
 
     .hero__intro h3{
@@ -650,6 +664,58 @@ body{
 
 @media screen and (max-width: 768px) {
     
+    .navbar__menu {
+        position: fixed;
+        top: 75px;
+        left: -100%;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        background-color: #f3f4f6;
+        padding: 20px;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+    }
+    
+    .navbar__menu.active {
+        left: 0;
+    }
+    
+    .navbar__link {
+        padding: 15px 0;
+        display: block;
+        font-size: 16px;
+        text-align: center;
+    }
+    
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        z-index: 1001;
+    }
+    
+    .hamburger .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px 0;
+        background-color: #1f2937;
+        transition: all 0.3s ease;
+    }
+    
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
     .navbar__actions{
         display: none;
     }
@@ -659,6 +725,7 @@ body{
         height: auto;
         padding: 40px 30px 0px;
         gap: 30px;
+        margin-top: 70px; /* Added for fixed navbar on mobile */
     }
 
     .hero__content,
